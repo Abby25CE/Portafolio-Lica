@@ -1,8 +1,8 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
 interface IconButtonProps {
-  icon: ReactNode
-  label: string
+  icon: ReactNode;
+  label: string;
 }
 
 const IconButton = ({ icon, label }: IconButtonProps) => {
@@ -11,9 +11,11 @@ const IconButton = ({ icon, label }: IconButtonProps) => {
       <div className="p-2 rounded-full bg-[#1f193d]/50 group-hover:bg-[#6c6499]/30 transition-all duration-300">
         {icon}
       </div>
-      <span className="text-xs opacity-80 group-hover:opacity-100 transition-all duration-300">{label}</span>
+      <span className="text-xs opacity-80 group-hover:opacity-100 transition-all duration-300">
+        {label}
+      </span>
     </button>
-  )
-}
+  );
+};
 
-export default IconButton
+export default IconButton;
