@@ -33,10 +33,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="flex absolute top-4 right-4 bg-gray-200 dark:bg-gray-700 p-2 rounded-full text-black dark:text-white"
-      aria-label="Toggle Theme"
+      className="flex  bg-gray-200 dark:bg-gray-700 w-full h-full p-2 items-center   text-center rounded-full text-black dark:text-white"
     >
-      {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      {isDark ? (
+        <Sun className="w-full h-full" />
+      ) : (
+        <Moon className="w-full h-full" />
+      )}
     </button>
   );
 }

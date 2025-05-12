@@ -1,11 +1,11 @@
 "use client";
 
 import { Mail, Phone, Linkedin, Globe } from "lucide-react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import ThemeToggle from "@/containers/ThemeToggle";
 import AvatarImage from "./AvatarImage";
 import IconButton from "./IconButton";
-import { useEffect, useState } from "react";
-import ThemeToggle from "@/containers/ThemeToggle";
-import Image from "next/image";
 
 const ProfileCard = () => {
   const [pulseState, setPulseState] = useState(0);
@@ -19,14 +19,15 @@ const ProfileCard = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-[#ffffff] text-[#cfb3e6] dark:bg-black dark:text-black relative transition-colors duration-500">
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-around top-2 absolute">
         <ThemeToggle />
+        <div>Logo </div>
         <Image
           src={"/Logo.png"} // asegúrate de que la ruta sea relativa a la carpeta `public`
           alt="Logo"
-          width={20} // ajusta según tus necesidades
-          height={20}
-          className="w-auto h-auto"
+          width={50} // ajusta según tus necesidades
+          height={50}
+          className="w-full h-full flex align-top"
         />
       </div>
 
