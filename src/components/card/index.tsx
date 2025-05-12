@@ -19,7 +19,7 @@ const ProfileCard = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-[#ffffff] text-[#cfb3e6] dark:bg-black dark:text-black relative transition-colors duration-500">
-      <div className="flex flex-row justify-around top-2 absolute">
+      <div className="flex flex-row justify-around object-top">
         <ThemeToggle />
         <div>Logo </div>
         <Image
