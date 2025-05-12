@@ -22,7 +22,7 @@ const ProfileCard = () => {
       <div className="flex flex-row justify-between">
         <ThemeToggle />
         <Image
-          src={"/publicLogo.png"} // asegúrate de que la ruta sea relativa a la carpeta `public`
+          src={"/Logo.png"} // asegúrate de que la ruta sea relativa a la carpeta `public`
           alt="Logo"
           width={20} // ajusta según tus necesidades
           height={20}
