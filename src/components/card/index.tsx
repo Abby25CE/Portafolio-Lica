@@ -2,10 +2,10 @@
 
 import { Mail, Phone, Linkedin, Globe } from "lucide-react";
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import ThemeToggle from "@/containers/ThemeToggle";
 import AvatarImage from "./AvatarImage";
 import IconButton from "./IconButton";
+import Nav from "./Nav";
+import Button from "./Buttonservice";
 
 const ProfileCard = () => {
   const [pulseState, setPulseState] = useState(0);
@@ -19,17 +19,7 @@ const ProfileCard = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-[#ffffff] text-[#cfb3e6] dark:bg-black dark:text-black relative transition-colors duration-500">
-      <div className="flex flex-row justify-around object-top">
-        <ThemeToggle />
-        <div>Logo </div>
-        <Image
-          src={"/Logo.png"} // asegúrate de que la ruta sea relativa a la carpeta `public`
-          alt="Logo"
-          width={50} // ajusta según tus necesidades
-          height={50}
-          className="w-full h-full flex align-top"
-        />
-      </div>
+      <Nav />
 
       {/* Background circles */}
       <div className="absolute left-0 top-0 h-[150px] w-[150px] bg-[#ad9bff] dark:bg-purple-200 rounded-full blur-[150px]" />
@@ -55,14 +45,7 @@ const ProfileCard = () => {
       </svg>
 
       {/* Card container */}
-      <div
-        className="relative w-[375px] h-[450px] flex flex-col items-center justify-center p-6 rounded-[20px] z-10
-          text-white dark:text-black transition-all duration-500"
-        style={{
-          background:
-            "radial-gradient(50% 90% at top, rgba(173, 155, 255, 0.3), rgba(11, 12, 22, 0.3)), linear-gradient(135deg, #1f193d, #05060d)",
-        }}
-      >
+      <div className="relative w-[375px] h-[450px] flex flex-col items-center justify-center p-6 rounded-[20px] z-10 text-gray-900 dark:text-gray-300 transition-all duration-500 bg-linear-to-t dark:from-blue-950 dark:to-emerald-900 from-sky-500 to-indigo-500">
         {/* Backdrop effect */}
         <div
           className="absolute z-[-2] rounded-[20px] opacity-30 transition-all duration-1000 ease-in-out"
@@ -106,9 +89,13 @@ const ProfileCard = () => {
           </p>
         </div>
 
+        <div className="z-30 py-5">
+          <Button />
+        </div>
+
         {/* Contact Icons */}
         <div className="flex flex-row justify-between w-full pt-6 px-2 z-30">
-          <a href="tel:+1234567890">
+          <a href="tel:+524435436069">
             <IconButton icon={<Phone className="w-5 h-5" />} label="Teléfono" />
           </a>
           <a href="mailto:correo@ejemplo.com">

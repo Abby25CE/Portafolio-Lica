@@ -5,10 +5,10 @@ import { Moon, Sun } from "lucide-react";
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
+  const applyTheme = (theme: "dark" | "light") => {
     const root = window.document.documentElement;
-    const theme = localStorage.getItem("theme");
     if (theme === "light") {
       root.classList.remove("dark");
       setIsDark(false);
@@ -16,30 +16,32 @@ export default function ThemeToggle() {
       root.classList.add("dark");
       setIsDark(true);
     }
+    localStorage.setItem("theme", theme);
+  };
+
+  useEffect(() => {
+    setMounted(true);
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "light" || storedTheme === "dark") {
+      applyTheme(storedTheme);
+    } else {
+      applyTheme("dark");
+    }
   }, []);
 
   const toggleTheme = () => {
-    const root = window.document.documentElement;
-    if (isDark) {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
-    setIsDark(!isDark);
+    applyTheme(isDark ? "light" : "dark");
   };
+
+  if (!mounted) return null;
 
   return (
     <button
+      aria-label="Toggle dark mode"
+      className="flex items-center justify-center relative z-10 p-2 w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full text-black dark:text-white"
       onClick={toggleTheme}
-      className="flex  bg-gray-200 dark:bg-gray-700 w-full h-full p-2 items-center   text-center rounded-full text-black dark:text-white"
     >
-      {isDark ? (
-        <Sun className="w-full h-full" />
-      ) : (
-        <Moon className="w-full h-full" />
-      )}
+      {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
     </button>
   );
 }
