@@ -1,8 +1,17 @@
-const Button = () => {
+"use client";
+import { Dispatch, SetStateAction } from "react";
+
+type DownloadButtonProps = {
+  cardColor: string;
+  setCardColor: Dispatch<SetStateAction<string>>;
+};
+
+const DownloadButton = ({ cardColor, setCardColor }: DownloadButtonProps) => {
   const pdfUrl = "/files/Services.pdf";
 
   const handleDownload = async () => {
     console.log("Click");
+
     try {
       const response = await fetch(pdfUrl, { method: "HEAD" });
       if (!response.ok) {
@@ -25,11 +34,14 @@ const Button = () => {
     <button
       onClick={handleDownload}
       aria-label="Descargar PDF"
-      className="px-6 py-2  rounded-full font-medium bg-linear-to-t to-blue-300 from-indigo-400   dark:to-blue-950 dark:from-emerald-900  transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+      className="px-6 py-2 rounded-full font-medium hover:bg-blend-darken hover:cursor-pointer text-black dark:text-white"
+      style={{
+        background: `linear-gradient(to top, ${cardColor}, #ffffff)`,
+      }}
     >
       Descargar PDF
     </button>
   );
 };
 
-export default Button;
+export default DownloadButton;

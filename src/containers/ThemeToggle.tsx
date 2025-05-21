@@ -38,7 +38,7 @@ export default function ThemeToggle() {
   return (
     <button
       aria-label="Toggle dark mode"
-      className="flex items-center justify-center relative z-10 p-2 w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full text-black dark:text-white"
+      className="flex items-center justify-center relative z-10 p-2 w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full text-black dark:text-white hover:cursor-pointer"
       onClick={toggleTheme}
     >
       {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}

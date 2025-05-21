@@ -1,14 +1,14 @@
 "use client";
-
 import { Mail, Phone, Linkedin, Globe } from "lucide-react";
 import { useEffect, useState } from "react";
 import AvatarImage from "./AvatarImage";
 import IconButton from "./IconButton";
-import Nav from "./Nav";
-import Button from "./Buttonservice";
+import DownloadButton from "./Buttonservice";
+import HeaderBar from "./Nav";
 
 const ProfileCard = () => {
   const [pulseState, setPulseState] = useState(0);
+  const [cardColor, setCardColor] = useState("#1f193d");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -18,13 +18,11 @@ const ProfileCard = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-[#ffffff] text-[#cfb3e6] dark:bg-black dark:text-black relative transition-colors duration-500">
-      <Nav />
-
+    <div className="min-h-screen  flex flex-col items-center justify-center p-4 bg-[#ffffff] text-[#cfb3e6] dark:bg-black dark:text-black relative transition-colors duration-500">
+      <HeaderBar color={cardColor} onColorChange={setCardColor} />
       {/* Background circles */}
-      <div className="absolute left-0 top-0 h-[150px] w-[150px] bg-[#ad9bff] dark:bg-purple-200 rounded-full blur-[150px]" />
-      <div className="absolute right-0 bottom-0 h-[150px] w-[150px] bg-[#ad9bff] dark:bg-purple-200 rounded-full blur-[150px]" />
-
+      <div className="absolute left-0 top-0 h-[150px] w-[150px] sm:w-[130px] bg-[#ad9bff] dark:bg-purple-200 rounded-full blur-[150px]" />
+      <div className="absolute right-0 bottom-0 h-[150px] w-[150px] sm:w-[130px] bg-[#ad9bff] dark:bg-purple-200 rounded-full blur-[150px]" />
       {/* SVG Filters */}
       <svg className="hidden">
         <filter id="noiseFilter">
@@ -43,9 +41,13 @@ const ProfileCard = () => {
           <rect width="300" height="300" rx="20" />
         </clipPath>
       </svg>
-
       {/* Card container */}
-      <div className="relative w-[375px] h-[450px] flex flex-col items-center justify-center p-6 rounded-[20px] z-10 text-gray-900 dark:text-gray-300 transition-all duration-500 bg-linear-to-t dark:from-blue-950 dark:to-emerald-900 from-sky-500 to-indigo-500">
+      <div
+        className="relative w-[375px] h-[450px] md:p-16 flex flex-col items-center justify-center p-6 rounded-[20px] z-10 text-gray-900 dark:text-gray-300 transition-all duration-500"
+        style={{
+          background: `linear-gradient(to top, ${cardColor}, #ffffff)`,
+        }}
+      >
         {/* Backdrop effect */}
         <div
           className="absolute z-[-2] rounded-[20px] opacity-30 transition-all duration-1000 ease-in-out"
@@ -90,7 +92,7 @@ const ProfileCard = () => {
         </div>
 
         <div className="z-30 py-5">
-          <Button />
+          <DownloadButton cardColor={cardColor} setCardColor={setCardColor} />
         </div>
 
         {/* Contact Icons */}
