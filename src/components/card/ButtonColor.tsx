@@ -1,4 +1,5 @@
 "use client";
+import { useClickOutside } from "@/hooks/useClickOutside";
 import { useEffect, useRef, useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { MdFormatColorReset, MdInvertColors } from "react-icons/md";
@@ -12,25 +13,7 @@ const ColorPicker = ({ color, onColorChange }: ColorPickerProps) => {
   const [showPicker, setShowPicker] = useState(false);
   const pickerRef = useRef<HTMLDivElement>(null);
 
-  // Cierra el picker al hacer clic fuera
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        pickerRef.current &&
-        !pickerRef.current.contains(event.target as Node)
-      ) {
-        setShowPicker(false);
-      }
-    };
-
-    if (showPicker) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showPicker]);
+  useClickOutside(pickerRef, () => setShowPicker(false));
 
   return (
     <div
