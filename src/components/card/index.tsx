@@ -5,10 +5,11 @@ import AvatarImage from "./AvatarImage";
 import IconButton from "./IconButton";
 import DownloadButton from "./Buttonservice";
 import HeaderBar from "./Nav";
+import { useCardColor } from "@/hooks/useCardColor";
 
 const ProfileCard = () => {
   const [pulseState, setPulseState] = useState(0);
-  const [cardColor, setCardColor] = useState("#1f193d");
+  const { cardColor, handleColorChange, setCardColor } = useCardColor();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,7 +20,8 @@ const ProfileCard = () => {
 
   return (
     <div className="min-h-screen  flex flex-col items-center justify-center p-4 bg-[#ffffff] text-[#cfb3e6] dark:bg-black dark:text-black relative transition-colors duration-500">
-      <HeaderBar color={cardColor} onColorChange={setCardColor} />
+      <HeaderBar onColorChange={handleColorChange} color={""} />
+
       {/* Background circles */}
       <div className="absolute left-0 top-0 h-[150px] w-[150px] sm:w-[130px] bg-[#ad9bff] dark:bg-purple-200 rounded-full blur-[150px]" />
       <div className="absolute right-0 bottom-0 h-[150px] w-[150px] sm:w-[130px] bg-[#ad9bff] dark:bg-purple-200 rounded-full blur-[150px]" />
