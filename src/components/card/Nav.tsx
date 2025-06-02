@@ -2,6 +2,7 @@
 import ThemeToggle from "@/containers/ThemeToggle";
 import React from "react";
 import ColorPicker from "./ButtonColor";
+import { FlipClock } from "@/containers/FlipClock";
 
 type HeaderBarProps = {
   color: string;
@@ -13,9 +14,7 @@ const HeaderBar = ({ color, onColorChange }: HeaderBarProps) => {
     <div className="absolute top-2 left-0 w-full px-4">
       <div className="flex items-center justify-between">
         <ThemeToggle />
-        <div className="text-lg font-semibold text-black dark:text-white">
-          Logo
-        </div>
+        <FlipClock />
         <ColorPicker color={color} onColorChange={onColorChange} />
       </div>
     </div>
